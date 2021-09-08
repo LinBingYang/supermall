@@ -1,11 +1,11 @@
 <!--  -->
 <template>
   <div class='goodlist-item' @click="itemclick">
-      <img :src="goodsitem.image" alt="" @load="imageload">
+      <img :src="showImage" alt="" @load="imageload">
       <div class="goods-info">
-          <p>春季下载小甲鱼</p>
-          <span class="price">396.5</span>
-          <span class="collect">1000</span>
+          <p>{{goodsitem.title}}</p>
+          <span class="price">{{goodsitem.price}}</span>
+          <span class="collect">{{goodsitem.sale}}</span>
         </div>
       </div>
 </template>
@@ -25,13 +25,19 @@
         }
     }
   },
-    components: {},
+    components: {
+
+    },
     data() {
       //这里存放数据
       return {}
     },
     //监听属性 类似于data概念
-    computed: {},
+    computed: {
+      showImage(){
+        return this.goodsitem.image||this.goodsitem.show.img
+      }
+    },
     //监控data中的数据变化
     watch: {},
     //方法集合
@@ -42,7 +48,13 @@
       },
       itemclick(){
         console.log('xiangqing');
-        this.$router.push('/detail/'+123321)
+        this.$router.push('/detail/'+this.goodsitem.iid);
+        // this.$router.push({
+        //   path:'/deatil',
+        //   query:{
+
+        //   }
+        // })
       }
     },
     //生命周期 - 创建完成（可以访问当前this实例）

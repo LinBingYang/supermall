@@ -44,7 +44,6 @@ export default {
       let swiperEle = document.querySelector(".swiper");
       let slideEles = document.getElementsByClassName("slide");
       this.slideCount = slideEles.length;
-      console.log(this.slideCount);
       if (this.slideCount > 1) {
         let cloneFirst = slideEles[0].cloneNode(true);
         let cloneLast = slideEles[this.slideCount - 1].cloneNode(true);

@@ -68,31 +68,16 @@ import {debounce} from "common/untils";
         recommends:[26],
         titles:['流行','新款','精选'],
         goods:{
-          'pop':{page:0,list:[{image: "https://g-search2.alicdn.com/img/bao/uploaded/i4/i3/196993935/O1CN01WAhIFK1ewHDkNoNwY_!!0-item_pic.jpg_250x250.jpg_.webp"}
-          ,{image: "https://g-search3.alicdn.com/img/bao/uploaded/i4/i2/3004857469/O1CN01MyggUe252quHzQbpF_!!3004857469.jpg_250x250.jpg_.webp"},
-          {image: "https://g-search3.alicdn.com/img/bao/uploaded/i4/i2/641725918/O1CN01iCusiU1taUcI15yi8_!!0-item_pic.jpg_250x250.jpg_.webp"},
-          {image: "https://g-search2.alicdn.com/img/bao/uploaded/i4/i3/2448721589/O1CN01z2Kxpj1Nbo2gHEiZ6_!!2448721589.jpg_250x250.jpg_.webp"},
-          {image: "https://g-search3.alicdn.com/img/bao/uploaded/i4/i3/3699339440/O1CN01eadgUG2JbZX8rCwxg_!!3699339440-0-lubanu-s.jpg_250x250.jpg_.webp"},
-          {image: "https://g-search3.alicdn.com/img/bao/uploaded/i4/i1/3310310137/O1CN01efdrHQ1CsmxHlrUgH_!!0-item_pic.jpg_250x250.jpg_.webp"}]},
-          'new':{page:0,list:[{image:"https://gw.alicdn.com/bao/upload/O1CN01CBQtDn21spNFMUYu0_!!6000000007041-0-yinhe.jpg_Q75.jpg_.webp"},
-          {image:"https://gw.alicdn.com/bao/upload/O1CN01CBQtDn21spNFMUYu0_!!6000000007041-0-yinhe.jpg_Q75.jpg_.webp"},
-          {image:"https://gw.alicdn.com/bao/upload/O1CN01qCre101QT3J6XW1Sn_!!6000000001976-0-yinhe.jpg_Q75.jpg_.webp"},
-          {image:"https://gw.alicdn.com/bao/upload/O1CN01HNlYiT211F2clTw6H_!!6000000006924-0-yinhe.jpg_Q75.jpg_.webp"},
-          {image:"https://gw.alicdn.com/bao/upload/O1CN018SqpYp1oXg5PaEnT9_!!6000000005235-0-yinhe.jpg_Q75.jpg_.webp"},
-          {image:"https://gw.alicdn.com/bao/upload/O1CN01slJ3q31hEiNcUNe6i_!!6000000004246-0-yinhe.jpg_Q75.jpg_.webp"}]},
-          'sell':{page:0,list:[{image:"https://gw.alicdn.com/bao/upload/O1CN01tSZ99L1D7Rby2PxYY_!!6000000000169-0-yinhe.jpg_Q75.jpg_.webp"},
-          {image:"https://gw.alicdn.com/bao/upload/O1CN01RkMsv61kLzWITi1ft_!!6000000004668-0-yinhe.jpg_Q75.jpg_.webp"},
-          {image:"https://gw.alicdn.com/bao/upload/O1CN01qCre101QT3J6XW1Sn_!!6000000001976-0-yinhe.jpg_Q75.jpg_.webp"},
-          {image:"https://gw.alicdn.com/bao/upload/O1CN01P5mbFW1bJOjPUvp0q_!!6000000003444-0-yinhe.jpg_Q75.jpg_.webp"},
-          {image:"https://gw.alicdn.com/bao/upload/O1CN01IvqSXT1ycqi5jDnsG_!!6000000006600-0-yinhe.jpg_Q75.jpg_.webp"},
-          {image:"https://gw.alicdn.com/bao/upload/O1CN01LOID8T29J7QhS5V8j_!!6000000008046-0-yinhe.jpg_Q75.jpg_.webp"},
-          {image:"https://gw.alicdn.com/bao/upload/O1CN01LOID8T29J7QhS5V8j_!!6000000008046-0-yinhe.jpg_Q75.jpg_.webp"}]},
+          'pop':{page:0,list:[]},
+          'new':{page:0,list:[]},
+          'sell':{page:0,list:[]},
         },
         type:'pop',
         isshowtop:false,
         tabOffsetTop:0,
         istabFiex:false,
-        saveScrollY:0
+        saveScrollY:0,
+        homeitemlistenner:null
         // goods:{
         //   'pop':{page:0,list:[]},
         //   'new':{page:0,list:[]},
@@ -133,6 +118,7 @@ import {debounce} from "common/untils";
     }
     this.$refs.tabcontrol2.currentindex=index;
     this.$refs.tabcontrol1.currentindex=index;
+    this.getHomeGoods(this.type);
   },
 //返回顶部
 backtopclick(){
@@ -156,14 +142,15 @@ swiperimageload(){
 },
 loadmore(){
   console.log('123')
-  const list=[{image:"https://gw.alicdn.com/bao/upload/O1CN01tSZ99L1D7Rby2PxYY_!!6000000000169-0-yinhe.jpg_Q75.jpg_.webp"},
-          {image:"https://gw.alicdn.com/bao/upload/O1CN01RkMsv61kLzWITi1ft_!!6000000004668-0-yinhe.jpg_Q75.jpg_.webp"},
-          {image:"https://gw.alicdn.com/bao/upload/O1CN01qCre101QT3J6XW1Sn_!!6000000001976-0-yinhe.jpg_Q75.jpg_.webp"},
-          {image:"https://gw.alicdn.com/bao/upload/O1CN01P5mbFW1bJOjPUvp0q_!!6000000003444-0-yinhe.jpg_Q75.jpg_.webp"},
-          {image:"https://gw.alicdn.com/bao/upload/O1CN01IvqSXT1ycqi5jDnsG_!!6000000006600-0-yinhe.jpg_Q75.jpg_.webp"},
-          {image:"https://gw.alicdn.com/bao/upload/O1CN01LOID8T29J7QhS5V8j_!!6000000008046-0-yinhe.jpg_Q75.jpg_.webp"},
-          {image:"https://gw.alicdn.com/bao/upload/O1CN01LOID8T29J7QhS5V8j_!!6000000008046-0-yinhe.jpg_Q75.jpg_.webp"}];
-  this.goods[this.type].list=[...this.goods[this.type].list, ...list];
+  // const list=[{image:"https://gw.alicdn.com/bao/upload/O1CN01tSZ99L1D7Rby2PxYY_!!6000000000169-0-yinhe.jpg_Q75.jpg_.webp"},
+  //         {image:"https://gw.alicdn.com/bao/upload/O1CN01RkMsv61kLzWITi1ft_!!6000000004668-0-yinhe.jpg_Q75.jpg_.webp"},
+  //         {image:"https://gw.alicdn.com/bao/upload/O1CN01qCre101QT3J6XW1Sn_!!6000000001976-0-yinhe.jpg_Q75.jpg_.webp"},
+  //         {image:"https://gw.alicdn.com/bao/upload/O1CN01P5mbFW1bJOjPUvp0q_!!6000000003444-0-yinhe.jpg_Q75.jpg_.webp"},
+  //         {image:"https://gw.alicdn.com/bao/upload/O1CN01IvqSXT1ycqi5jDnsG_!!6000000006600-0-yinhe.jpg_Q75.jpg_.webp"},
+  //         {image:"https://gw.alicdn.com/bao/upload/O1CN01LOID8T29J7QhS5V8j_!!6000000008046-0-yinhe.jpg_Q75.jpg_.webp"},
+  //         {image:"https://gw.alicdn.com/bao/upload/O1CN01LOID8T29J7QhS5V8j_!!6000000008046-0-yinhe.jpg_Q75.jpg_.webp"}];
+  // this.goods[this.type].list=[...this.goods[this.type].list, ...list];
+  this.getHomeGoods(this.type);
   this.$refs.scroll.scroll&&this.$refs.scroll.scroll.finishPullUp();//上拉加载结束，才能继续下次
   //this.$refs.scroll.scroll.refresh();//刷新scroll重新计算高度
 },
@@ -189,7 +176,7 @@ loadmore(){
     //生命周期 - 创建完成（可以访问当前this实例）
     created() {
       this.getHomeMultidata();
-      // this.getHomeGoods('pop');
+      this.getHomeGoods('pop');
       // this.getHomeGoods('new');
       // this.getHomeGoods('sell');
       // getHomeMultidata().then(res=>{
@@ -208,14 +195,17 @@ loadmore(){
      const brefresh=debounce(this.$refs.scroll.refresh,20);
      console.log(brefresh)
       //3.监听item中图片加载完成
-      this.$bus.$on('itemimageload',()=>{
+      this.homeitemlistenner=()=>{
         console.log('---');  
         brefresh()
-        //  this.$refs.scroll.scroll&&this.$refs.scroll.refresh();//刷新scroll重新计算高度
-        })
+        }
+    this.$bus.$on('itemimageload',this.homeitemlistenner)
+      // this.$bus.$on('itemimageload',()=>{
+      //   console.log('---');  
+      //   brefresh()
+      //   //  this.$refs.scroll.scroll&&this.$refs.scroll.refresh();//刷新scroll重新计算高度
+      //   })
       //2、获取tabcontrol的offsettop的高度 $el:用于获取组件中的元素
-      
-
 
     },
     beforeCreate() {}, //生命周期 - 创建之前
@@ -227,11 +217,16 @@ loadmore(){
 
     }, //生命周期 - 销毁完成
     activated() {
+      console.log('activated')
       this.$refs.scroll.scroll.scrollTo(0,this.saveScrollY,0)
       this.$refs.scroll.refresh()
     }, //进来如果页面有keep-alive缓存功能，这个函数会触发
     deactivated() {
+      //保存Y值
       this.saveScrollY=this.$refs.scroll.getscrollY()
+    //取消全局事件的监听
+    this.$bus.$off('itemimageload',this.homeitemlistenner)
+      console.log('deactivated'+this.saveScrollY)
 ;
     }, //离开如果页面有keep-alive缓存功能，这个函数会触发
   }

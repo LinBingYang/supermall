@@ -43,6 +43,7 @@ import NavBar from 'components/common/navbar/NavBar.vue';
     methods: {
         titleclick(index){
             this.currentindex=index;
+            this.$emit('titleclick',index);
         },
         back(){
             console.log('fanhui')
