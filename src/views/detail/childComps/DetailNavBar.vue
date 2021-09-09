@@ -6,7 +6,7 @@
              <img src="~assets/img/home/back.png" alt="">
           </div>
           <div slot="center" class="navtitile">
-              <div v-for="(item , index) in titles" 
+              <div v-for="(item , index) in titles" :key="index"
               class="titleitem" 
               :class="{titleActive:index==currentindex}" 
               @click="titleclick(index)"

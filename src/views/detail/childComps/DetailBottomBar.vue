@@ -47,7 +47,7 @@
     //方法集合
     methods: {
         addToCart(){
-             this.$emit('addToCart')
+         this.$emit('addToCart')
     }
     },
     //生命周期 - 创建完成（可以访问当前this实例）

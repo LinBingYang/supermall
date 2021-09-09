@@ -6,6 +6,8 @@
       <Scroll class="content" ref="scroll" 
       :probe_type="3"
       @scroll="contentscroll">
+      
+     
          <Swiper class="detail-swiper">
       <SwiperItem v-for="(item, index) in topimage" :key="index" >
         <a href="">
@@ -151,6 +153,19 @@ import {
         },
         cartclick(){
           console.log('加入购物车')
+          const product={}
+          product.image=this.topimage[0];
+          product.title=this.goods.title;
+          product.desc=this.goods.desc;
+          product.price=this.goods.lowNowPrice;
+          product.iid=this.iid;
+          product.checked=true;
+          // console.log(product);
+          // this.$store.commit('addCart',product)
+          this.$store.dispatch('addCart',product).then(res =>{
+            console.log(res)
+            this.$toast.show(res,1500)
+          })
         }
        
     },
