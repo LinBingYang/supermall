@@ -40,5 +40,11 @@ export default {
 </script>
 
 <style>
+html,body,#app{
+ 
+ height: 100%;
+ 
+}
 @import "assets/css/base.css"
+
 </style>
