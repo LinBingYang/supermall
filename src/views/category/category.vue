@@ -33,6 +33,23 @@
       v-on:click="newamap()"
     >地图
     </div>
+    <div
+      v-on:click="new3damap()"
+    >3D地图
+    </div>
+    <div>
+      <a href="pcs://zhangpu.app">打开漳浦appaaasaaaaaaaaaaaaaaa</a>
+    </div>
+    
+    <el-row>
+  <el-button>默认按钮</el-button>
+  <el-button type="primary" @click="xtgl">系统管理</el-button>
+  <el-button type="success">成功按钮</el-button>
+  <el-button type="info">信息按钮</el-button>
+  <el-button type="warning">警告按钮</el-button>
+  <el-button type="danger">危险按钮</el-button>
+</el-row>
+<el-button type="primary" @click="qhgb">气候公报</el-button>
   </div>
 </template>
 
@@ -114,6 +131,16 @@ import blue from "@/assets/img/tabbar/b00.png"
       },
       newamap(){
         this.$router.push('/newamap');
+      },
+      new3damap(){
+        // this.$router.push('/dmap');
+        
+      },
+      xtgl(){
+        this.$router.push('/glxt');
+      },
+      qhgb(){
+        this.$router.push('/qhgb');
       }
       
     },

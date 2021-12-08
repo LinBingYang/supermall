@@ -10,6 +10,10 @@ import mainprofile from 'views/profield/profield'
 import Detail from 'views/detail/Detail'
 import newbeasier from 'views/category/newbeasier'
 import newamap from 'views/category/newamap'
+import glxt from 'views/category/childComps/glxt'
+import qhgb from 'views/category/childComps/qhgb'
+import web from 'views/category/childComps/web'
+import dmap from 'views/category/3DMap'
 Vue.use(Router)
 
 export default new Router({
@@ -42,6 +46,22 @@ export default new Router({
   {
     path: '/newamap',
    component: newamap,
+  },
+  {
+    path: '/dmap',
+   component: dmap,
+  },
+  {
+    path: '/glxt',
+   component: glxt,
+  },
+  {
+    path: '/qhgb',
+   component: qhgb,
+  },
+  {
+    path: '/web',
+   component: web,
   }
   ],
 mode:'history',

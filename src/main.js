@@ -2,6 +2,9 @@ import Vue from 'vue'
 import App from './App'
 import router from './router'
 
+import ElementUI from "element-ui";
+import "element-ui/lib/theme-chalk/index.css";
+
 import store from './store'
 import toast from './components/common/toast'
 import VueLazyload from 'vue-lazyload'//图片懒加载插件
@@ -30,7 +33,7 @@ Vue.use(VueLazyload, {
   loading: require('./assets/img/common/placeholder.png')
  
 })
-
+Vue.use(ElementUI)
 
 Vue.prototype.$bus=new Vue()
 /* eslint-disable no-new */
